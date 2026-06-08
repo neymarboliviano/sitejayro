@@ -1,1 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URBAN FIT — Institutional High Performance Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand-logo" id="brand-logo-btn">URBAN FIT</div>
+            <nav class="main-nav">
+                <button class="nav-link active" data-target="0" id="nav-home-txt">Home</button>
+                <button class="nav-link" data-target="1" id="nav-catalog-txt">Catalog</button>
+                <button class="nav-link" data-target="2" id="nav-detail-txt">Product Details</button>
+                <button class="nav-link" data-target="3" id="nav-user-txt">User Portal</button>
+                <button class="nav-link" data-target="4" id="nav-lab-txt">Innovation Lab</button>
+                <button class="nav-link" data-target="5" id="nav-community-txt">Community</button>
+                <button class="nav-link" data-target="6" id="nav-analytics-txt">Analytics</button>
+            </nav>
+            <div class="header-actions">
+                <button class="action-btn" id="lang-toggle-btn">EN</button>
+                <button class="action-btn" id="theme-toggle-btn">Theme</button>
+                <button class="action-btn" id="wishlist-toggle-btn">Wishlist (<span id="wishlist-count">0</span>)</button>
+                <button class="action-btn" id="cart-toggle-btn">Cart (<span id="cart-count">0</span>)</button>
+            </div>
+        </div>
+        <div class="search-sticky-bar">
+            <div class="sticky-bar-wrapper">
+                <input type="text" id="sticky-search-input" placeholder="Search system standard catalog...">
+                <select id="sticky-filter-category">
+                    <option value="all">All Sectors</option>
+                    <option value="apparel">Apparel Division</option>
+                    <option value="equipment">Equipment Division</option>
+                </select>
+            </div>
+        </div>
+    </header>
 
+    <div class="spa-viewport">
+        <div class="spa-slider-wrapper" id="main-slider-wrapper">
+            
+            <section class="spa-view-section" id="view-home">
+                <div class="view-content">
+                    <div class="promo-banner-carousel">
+                        <div class="promo-slide" id="promo-banner-text">SYSTEM UPDATE: MAXIMUM PERFORMANCE GEAR PROTOCOL ACTIVE</div>
+                    </div>
+                    <div class="scarcity-indicator-panel">
+                        <div class="scarcity-label-row">
+                            <span id="scarcity-txt-label">Institutional Asset Scarcity Level</span>
+                            <span class="scarcity-percentage" id="scarcity-pct-value">84%</span>
+                        </div>
+                        <div class="scarcity-progress-container">
+                            <div class="scarcity-progress-bar" id="scarcity-progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="fitness-missions-module">
+                        <h2 id="missions-title">Daily Fitness Missions Protocol</h2>
+                        <div class="missions-grid">
+                            <div class="mission-card">
+                                <div class="mission-interactive-row">
+                                    <input type="checkbox" id="mission-1-chk" class="mission-checkbox" data-points="150">
+                                    <label for="mission-1-chk" id="m1-label">Complete 10K Endurance Session (+150 pts)</label>
+                                </div>
+                            </div>
+                            <div class="mission-card">
+                                <div class="mission-interactive-row">
+                                    <input type="checkbox" id="mission-2-chk" class="mission-checkbox" data-points="200">
+                                    <label for="mission-2-chk" id="m2-label">Hydration Registry 3.5 Liters (+200 pts)</label>
+                                </div>
+                            </div>
+                            <div class="mission-card">
+                                <div class="mission-interactive-row">
+                                    <input type="checkbox" id="mission-3-chk" class="mission-checkbox" data-points="300">
+                                    <label for="mission-3-chk" id="m3-label">High Intensity Core Workout Protocol (+300 pts)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rewards-status-box">
+                            <span id="rewards-points-label">Accumulated Balance:</span>
+                            <span class="points-display" id="rewards-points-value">0</span>
+                            <span class="points-unit">PTS</span>
+                        </div>
+                    </div>
+                    <div class="recommendations-container">
+                        <h2 id="recommendations-title">Engineered Recommendations</h2>
+                        <div class="products-grid-layout" id="home-recommendations-grid"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="spa-view-section" id="view-catalog">
+                <div class="view-content">
+                    <div class="catalog-control-matrix">
+                        <input type="text" id="catalog-search" placeholder="Filter assets by designation...">
+                        <select id="catalog-category-filter">
+                            <option value="all">Complete Spectrum</option>
+                            <option value="apparel">Apparel</option>
+                            <option value="equipment">Equipment</option>
+                        </select>
+                        <select id="catalog-sort">
+                            <option value="default">Standard Order</option>
+                            <option value="low-high">Price: Ascending</option>
+                            <option value="high-low">Price: Descending</option>
+                        </select>
+                    </div>
+                    <div class="skeleton-container-wrapper" id="catalog-skeleton-loader">
+                        <div class="skeleton-card"></div>
+                        <div class="skeleton-card"></div>
+                        <div class="skeleton-card"></div>
+                        <div class="skeleton-card"></div>
+                    </div>
+                    <div class="products-grid-layout" id="catalog-main-grid"></div>
+                </div>
+            </section>
+
+            <section class="spa-view-section" id="view-details">
+                <div class="view-content">
+                    <div class="product-details-container" id="dynamic-details-target">
+                        <div class="details-fallback-message" id="details-fallback-txt">No specific asset selected. Access the Complete Spectrum catalog.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="spa-view-section" id="view-user">
+                <div class="view-content">
+                    <div class="auth-portal-grid">
+                        <div class="auth-box">
+                            <h2 id="login-title">Account Authentication</h2>
+                            <form id="login-form-element" class="auth-form">
+                                <div class="form-group">
+                                    <label id="login-email-lbl">Email Address</label>
+                                    <input type="email" required class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label id="login-pass-lbl">Security Password</label>
+                                    <input type="password" required class="form-input">
+                                </div>
+                                <button type="submit" class="prime-action-btn" id="login-submit-btn">Execute Authentication</button>
+                            </form>
+                        </div>
+                        <div class="auth-box">
+                            <h2 id="register-title">Identity Registry</h2>
+                            <form id="register-form-element" class="auth-form">
+                                <div class="form-group">
+                                    <label id="reg-name-lbl">Full Name</label>
+                                    <input type="text" required class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label id="reg-email-lbl">Email Address</label>
+                                    <input type="email" required class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label id="reg-pass-lbl">Security Password</label>
+                                    <input type="password" id="register-password-field" required class="form-input">
+                                    <div class="password-strength-meter">
+                                        <div class="strength-bar" id="pwd-strength-indicator"></div>
+                                    </div>
+                                    <span class="validation-message-alert" id="password-validation-log"></span>
+                                </div>
+                                <button type="submit" class="prime-action-btn" id="register-submit-btn">Register Identity</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="profile-management-panel" id="user-profile-panel">
+                        <h2 id="profile-title">Identity Configuration Data</h2>
+                        <div class="profile-data-block">
+                            <p><strong id="prof-lbl-name">Name:</strong> <span id="prof-val-name">Guest Identity</span></p>
+                            <p><strong id="prof-lbl-email">Email:</strong> <span id="prof-val-email">unauthenticated@urbanfit.com</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="spa-view-section" id="view-lab">
+                <div class="view-content">
+                    <div class="innovation-hub-grid">
+                        <div class="lab-module-card">
+                            <h3 id="lab-ai-title">AI Style Core Recommendation Engine</h3>
+                            <div class="form-group">
+                                <label id="lab-ai-goal">Fitness Target</label>
+                                <select id="ai-fitness-goal" class="form-input">
+                                    <option value="hypertrophy">Hypertrophy Development</option>
+                                    <option value="endurance">Endurance Amplification</option>
+                                    <option value="mobility">Flexibility and Mobility</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label id="lab-ai-freq">Weekly Frequency</label>
+                                <select id="ai-fitness-freq" class="form-input">
+                                    <option value="low">1 to 2 Sessions</option>
+                                    <option value="mid">3 to 4 Sessions</option>
+                                    <option value="high">5 or More Sessions</option>
+                                </select>
+                            </div>
+                            <button class="prime-action-btn" id="ai-recommend-trigger">Compute Style Matrix</button>
+                            <div class="ai-output-display" id="ai-style-output"></div>
+                        </div>
+
+                        <div class="lab-module-card">
+                            <h3 id="lab-fitting-title">Virtual Fitting Lab Simulator</h3>
+                            <div class="fitting-controls">
+                                <select id="fit-upper" class="form-input"></select>
+                                <select id="fit-lower" class="form-input"></select>
+                                <select id="fit-footwear" class="form-input"></select>
+                            </div>
+                            <div class="virtual-mirror-display">
+                                <div id="mirror-upper-slot" class="mirror-layer"></div>
+                                <div id="mirror-lower-slot" class="mirror-layer"></div>
+                                <div id="mirror-footwear-slot" class="mirror-layer"></div>
+                            </div>
+                        </div>
+
+                        <div class="lab-module-card">
+                            <h3 id="lab-composer-title">Dynamic Outfit Composer</h3>
+                            <div class="composer-canvas" id="composer-canvas-area"></div>
+                            <button class="prime-action-btn" id="composer-checkout-btn">Purchase Complete Composition Bundle</button>
+                        </div>
+
+                        <div class="lab-module-card">
+                            <h3 id="lab-quiz-title">Multistep Fitness Gear Quiz</h3>
+                            <div class="quiz-wizard-flow" id="quiz-wizard-container">
+                                <div class="quiz-step active" data-step="1">
+                                    <p id="q1-text">Select Primary Thermal Environment Profile:</p>
+                                    <button class="quiz-opt-btn prime-action-btn" data-value="cold">Cold Atmosphere</button>
+                                    <button class="quiz-opt-btn prime-action-btn" data-value="hot">Controlled Temperature</button>
+                                </div>
+                                <div class="quiz-step" data-step="2">
+                                    <p id="q2-text">Select Activity Material Density Preference:</p>
+                                    <button class="quiz-opt-btn prime-action-btn" data-value="light">Ultra Lightweight</button>
+                                    <button class="quiz-opt-btn prime-action-btn" data-value="compression">Compression Focus</button>
+                                </div>
+                                <div class="quiz-step" data-step="3">
+                                    <div id="quiz-final-result"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lab-module-card">
+                            <h3 id="lab-bmi-title">Biometric Metric Index Calculator (BMI)</h3>
+                            <div class="form-group">
+                                <label id="bmi-height-lbl">Height (cm)</label>
+                                <input type="number" id="bmi-height-input" class="form-input" min="100" max="250" value="175">
+                            </div>
+                            <div class="form-group">
+                                <label id="bmi-weight-lbl">Mass Weight (kg)</label>
+                                <input type="number" id="bmi-weight-input" class="form-input" min="30" max="200" value="70">
+                            </div>
+                            <button class="prime-action-btn" id="bmi-calculate-trigger">Process Metrics</button>
+                            <div class="bmi-results-panel" id="bmi-output-panel"></div>
+                        </div>
+
+                        <div class="lab-module-card">
+                            <h3 id="lab-eco-title">Corporate Sustainability Analytics</h3>
+                            <div class="sustainability-dashboard">
+                                <div class="eco-metric-node">
+                                    <span id="eco-lbl-carbon">Carbon Dioxide Offset Balance</span>
+                                    <div class="eco-value"><span id="eco-val-carbon">2480</span> KG</div>
+                                </div>
+                                <div class="eco-metric-node">
+                                    <span id="eco-lbl-packaging">Recycled Structural Cardboard</span>
+                                    <div class="eco-value"><span id="eco-val-packaging">9410</span> UN</div>
+                                </div>
+                                <div class="eco-metric-node">
+                                    <span id="eco-lbl-plastic">Oceanic Plastic Mass Repurposed</span>
+                                    <div class="eco-value"><span id="eco-val-plastic">1350</span> KG</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lab-module-card">
+                            <h3 id="lab-vault-title">Institutional Achievement Vault</h3>
+                            <div class="achievements-matrix" id="achievements-container-matrix"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="spa-view-section" id="view-community">
+                <div class="view-content">
+                    <div class="community-hub-architecture">
+                        <div class="feed-generation-column">
+                            <div class="create-post-card">
+                                <textarea id="post-input-textarea" placeholder="Broadcast fitness metrics or technical log entries..."></textarea>
+                                <button class="prime-action-btn" id="post-publish-trigger">Broadcast Post</button>
+                            </div>
+                            <div class="community-feed-stream" id="social-feed-stream"></div>
+                        </div>
+                        <div class="leaderboard-ranking-column">
+                            <h3 id="community-leaderboard-title">Weekly Performance Standings</h3>
+                            <ol class="leaderboard-list-element" id="leaderboard-ranking-list"></ol>
+                            <div class="look-of-week-highlight">
+                                <h3 id="community-look-title">Look Sequence of the Week</h3>
+                                <div class="look-display-box" id="weekly-look-box"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="spa-view-section" id="view-analytics">
+                <div class="view-content">
+                    <div class="corporate-analytics-dashboard">
+                        <div class="analytics-header-row">
+                            <h2 id="analytics-panel-title">Realtime Corporate Analytics Core</h2>
+                        </div>
+                        <div class="metrics-summary-grid">
+                            <div class="metric-summary-card">
+                                <span id="an-lbl-sales">Total Aggregated Revenue</span>
+                                <div class="metric-large-value" id="an-val-sales">$284,915.00</div>
+                            </div>
+                            <div class="metric-summary-card">
+                                <span id="an-lbl-growth">Monthly Scaling Coefficient</span>
+                                <div class="metric-large-value" id="an-val-growth">+24.8%</div>
+                            </div>
+                            <div class="metric-summary-card">
+                                <span id="an-lbl-viewed">Top Catalog View Index</span>
+                                <div class="metric-large-value" id="an-val-viewed">0</div>
+                            </div>
+                            <div class="metric-summary-card">
+                                <span id="an-lbl-fav">Top Wishlist Capture Count</span>
+                                <div class="metric-large-value" id="an-val-fav">0</div>
+                            </div>
+                        </div>
+                        <div class="analytics-charts-simulation">
+                            <div class="chart-box-node">
+                                <h4 id="an-chart-sales">Asset Volume Conversion Trajectory</h4>
+                                <div class="simulated-bar-chart" id="sales-chart-bars"></div>
+                            </div>
+                            <div class="chart-box-node">
+                                <h4 id="an-chart-reviews">Customer Validation Index Tendency</h4>
+                                <div class="simulated-line-chart" id="reviews-chart-line"></div>
+                            </div>
+                        </div>
+                        <div class="inventory-status-table-container">
+                            <h4 id="an-table-title">System Asset Inventory & Stock Registry</h4>
+                            <table class="corporate-data-table">
+                                <thead>
+                                    <tr>
+                                        <th id="th-id">Identifier</th>
+                                        <th id="th-name">Product Label</th>
+                                        <th id="th-stock">Units Level</th>
+                                        <th id="th-status">Logistics Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inventory-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <div class="comparison-tray-dock" id="comparison-dock-tray">
+        <div class="comparison-dock-container">
+            <span id="comp-tray-count-txt">Comparison Selection Registry (<span id="comparison-qty-counter">0</span>/3)</span>
+            <div class="comparison-mini-previews" id="comparison-previews-tray-slot"></div>
+            <button class="prime-action-btn" id="comparison-execute-trigger">Execute Matrix Comparison</button>
+        </div>
+    </div>
+
+    <div class="sidebar-drawer-overlay" id="cart-drawer-element">
+        <div class="sidebar-drawer-canvas">
+            <div class="drawer-header-row">
+                <h3 id="cart-drawer-title">Shopping Cart Registry</h3>
+                <button class="close-drawer-btn" id="cart-close-trigger">Close</button>
+            </div>
+            <div class="drawer-scrollable-content" id="cart-items-output-list"></div>
+            <div class="drawer-footer-summary">
+                <div class="summary-line-item">
+                    <span id="cart-total-lbl">Financial Subtotal</span>
+                    <span class="summary-total-price" id="cart-calculated-total-value">$0.00</span>
+                </div>
+                <button class="prime-action-btn" id="cart-checkout-action-btn">Finalize Acquisition Protocol</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-drawer-overlay" id="wishlist-drawer-element">
+        <div class="sidebar-drawer-canvas">
+            <div class="drawer-header-row">
+                <h3 id="wishlist-drawer-title">Wishlist Registry</h3>
+                <button class="close-drawer-btn" id="wishlist-close-trigger">Close</button>
+            </div>
+            <div class="drawer-scrollable-content" id="wishlist-items-output-list"></div>
+        </div>
+    </div>
+
+    <div class="modal-overlay-container" id="comparison-modal-element">
+        <div class="modal-viewport-card">
+            <div class="modal-header-row">
+                <h3 id="comp-modal-title">Product Matrix Correlation Matrix</h3>
+                <button class="close-drawer-btn" id="comparison-modal-close-trigger">Dismiss Matrix</button>
+            </div>
+            <div class="modal-body-scroll" id="comparison-matrix-table-output"></div>
+        </div>
+    </div>
+
+    <div class="social-proof-toast-container" id="live-social-proof-toast">
+        <div class="toast-body-text" id="live-toast-message-content">System Monitor Active.</div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
